@@ -29,6 +29,8 @@ jobs:
         run: npm install
         working-directory: ./ThundraForesightInitializer
       - name: tsc
-        run: tsc
+        run: |
+            tsc -version
+            tsc
         working-directory: ./ThundraForesightInitializer
  
