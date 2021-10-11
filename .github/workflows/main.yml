@@ -36,5 +36,5 @@ jobs:
       - name: install tfx
         run: npm i -g tfx-cli
       - name: publish
-        run: tfx extension publish --manifest-globs vss-extension.json --share-with yusuferdem --token:io7qr4kq4zcavp4s4m7whay7axbaxtfvgh7kcvoaaknsujomk4lq
+        run: tfx extension publish --manifest-globs vss-extension.json --share-with yusuferdem --token io7qr4kq4zcavp4s4m7whay7axbaxtfvgh7kcvoaaknsujomk4lq
  
