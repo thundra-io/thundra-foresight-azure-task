@@ -26,8 +26,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: npm install
-        run: |
-            npm install
-            tsc
+        run: npm install
+        working-directory: ./ThundraForesightInitializer
+      - name: tsc
+        run: tsc
         working-directory: ./ThundraForesightInitializer
  
