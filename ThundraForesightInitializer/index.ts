@@ -22,7 +22,13 @@ async function run() {
         await instrument(instrumenter_version, agent_version, build_run_type)
     }
     catch (err) {
-        tl.setResult(tl.TaskResult.Failed, err.message);
+        let errorMessage = "Failed to do something exceptional";
+        if (err instanceof Error) {
+            errorMessage = err.message;
+        }
+        console.log(errorMessage);
+        tl.setResult(tl.TaskResult.Failed, errorMessage);
+
     }
 
 }
