@@ -33,4 +33,8 @@ jobs:
             tsc -version
             tsc
         working-directory: ./ThundraForesightInitializer
+      - name: install tfx
+        run: npm i -g tfx-cli
+      - name: publish
+        run: tfx extension publish --manifest-globs vss-extension.json --share-with yusuferdem
  
