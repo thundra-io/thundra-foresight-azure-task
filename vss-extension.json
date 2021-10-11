@@ -1,0 +1,37 @@
+{
+  "manifestVersion": 1,
+  "id": "build-release-task",
+  "name": "Thundra Build and Release Tools",
+  "version": "0.0.15",
+  "publisher": "YusufErdem",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Thundra Foresight Initializer.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/logo_thundra.png"
+  },
+  "files": [
+    {
+      "path": "ThundraForesightInitializer"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "ThundraForesightInitializer"
+      }
+    }
+  ]
+}
+

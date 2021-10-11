@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "d916f8db-7b02-4d34-89f3-9cc31ef383a1",
+  "name": "ThundraForesightInitializer",
+  "friendlyName": "Thundra Foresight Initializer",
+  "description": "Initialize your pipeline for using Thundra Foresight",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Yusuf Erdem",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 15
+  },
+  "instanceNameFormat": "Initialize Thundra Foresight",
+  "inputs": [
+    {
+      "name": "api_key",
+      "type": "string",
+      "label": "api_key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Thundra Foresight Apikey"
+    },
+    {
+      "name": "project_id",
+      "type": "string",
+      "label": "project_id",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Thundra Foresight Project Id"
+    },
+    {
+      "name": "build_run_type",
+      "type": "pickList",
+      "label": "build_run_type",
+      "defaultValue": "Maven",
+      "required": true,
+      "helpMarkDown": "Thundra Foresight Build Runner Type",
+      "options": {
+        "Maven": "Maven",
+        "Gradle": "Gradle"
+      }
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "index.js"
+    }
+  }
+}
+
