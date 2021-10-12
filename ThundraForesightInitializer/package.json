@@ -22,5 +22,8 @@
     "@types/q": "^1.5.5",
     "@types/xml2js": "^0.4.9",
     "sync-request": "^6.1.0"
+  },
+  "scripts": {
+    "testScript": "mocha L0.js --reporter xunit --reporter-option output=ResultsFile.xml"
   }
 }
