@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
-  "id": "d916f8db-7b02-4d34-89f3-9cc31ef383a1",
+  "id": "026d9f5c-cda5-4d0d-b455-803df03cf768",
   "name": "ThundraForesightInitializer",
   "friendlyName": "Thundra Foresight Initializer",
   "description": "Initialize your pipeline for using Thundra Foresight",
