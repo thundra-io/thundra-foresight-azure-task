@@ -9,6 +9,17 @@
       "path": "overview.md"
     }
   },
+  "links": {
+    "privacypolicy": {
+      "uri": "https://www.thundra.io/privacy-policy"
+    },
+    "support": {
+      "uri": "https://www.thundra.io/contact-us"
+    },
+    "license": {
+      "uri": "https://github.com/thundra-io/thundra-foresight-azure-task/blob/master/LICENSE"
+    }
+  },
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
