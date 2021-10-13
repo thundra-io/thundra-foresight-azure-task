@@ -6,9 +6,16 @@
   "publisher": "Thundra",
   "content": {
     "details": {
-      "path": "overview.md"
+      "path": "README.md"
     }
   },
+  "screenshots": [
+    {
+      "path": "images/screenshot_taskyaml.png"
+    },{
+      "path": "images/screenshot_taskgui.png"
+    }
+  ],
   "links": {
     "privacypolicy": {
       "uri": "https://www.thundra.io/privacy-policy"
@@ -48,6 +55,11 @@
         "name": "ThundraForesightInitializer"
       }
     }
-  ]
+  ],
+
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/thundra-io/thundra-foresight-azure-task"
+  }
 }
 
