@@ -21,10 +21,9 @@ You can integrate your Azure Devops Project pipeline in just 2 steps. First, you
 - First of all install Thundra Foresight Initializer extension to your azure devops organization.
 - Select project that you want to integrate Foresight and Edit your pipeline yaml file or editor.
 - If you use  the classic editor to create a pipeline without YAML, Search Thundra Foresight Initializer task from task list (shown below), Add this task to pipeline, **after checkout step and before maven or gradle build/test/verify step**
-  [![screenshot-1](images/screenshot_taskgui.png "Screenshot-1")](images/screenshot_taskgui.png)
-
+  ![GUI Editor](images/screenshot_taskgui.png)
 - If you want to use pipeline with yaml, Add this code snippet to your yaml, **between checkout and  maven or gradle test step**
-  [![screenshot-2](images/screenshot_taskyaml.png "Screenshot-2")](images/screenshot_taskyaml.png)
+  ![yaml](images/screenshot_taskyaml.png)
 
       - task: ThundraForesightInitializer@0
         inputs:
