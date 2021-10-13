@@ -42,6 +42,10 @@
   "files": [
     {
       "path": "ThundraForesightInitializer"
+    },
+    {
+      "path": "images",
+      "addressable": true
     }
   ],
   "contributions": [
