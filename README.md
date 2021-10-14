@@ -20,8 +20,12 @@ You can integrate your Azure Devops Project pipeline in just 2 steps. First, you
 
 - First of all install Thundra Foresight Initializer extension to your azure devops organization.
 - Select project that you want to integrate Foresight and Edit your pipeline yaml file or editor.
+  
+  **Add with Classic Editor**
 - If you use  the classic editor to create a pipeline without YAML, Search Thundra Foresight Initializer task from task list (shown below), Add this task to pipeline, **after checkout step and before maven or gradle build/test/verify step**
   ![GUI Editor](images/screenshot_taskgui.png)
+  
+  **Add with yaml**
 - If you want to use pipeline with yaml, Add this code snippet to your yaml, **between checkout and  maven or gradle test step**
   ![yaml](images/screenshot_taskyaml.png)
 
@@ -30,6 +34,8 @@ You can integrate your Azure Devops Project pipeline in just 2 steps. First, you
           api_key: '$(THUNDRA_APIKEY)'
           project_id: '$(THUNDRA_AGENT_TEST_PROJECT_ID)'
           build_run_type: **Select from list**
+
+**Variables**
 - Go to your Pipeline **Variables** page and add the `THUNDRA_APIKEY` (don't forget to keep this value as secret) and `THUNDRA_AGENT_TEST_PROJECT_ID` variables wtih your foresight project configuration described before.
 
-   For further information please visit: [https://foresight.docs.thundra.io/integrations/bitbucket](https://foresight.docs.thundra.io/integrations/bitbucket)
+   For further information please visit: [https://foresight.docs.thundra.io/integrations/azure-devops](https://foresight.docs.thundra.io/integrations/azure-devops)
