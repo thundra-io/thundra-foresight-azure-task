@@ -30,7 +30,7 @@ export async function instrumentmaven(instrumenter_version?: string, agentPath?:
     console.log('>found pom files: ' + poms.toString())
 
     if (poms && poms.length > 0) {
-        await execPromise(`java -jar ${mvnInstrumentaterPath} ${agentPath} "${poms.trim()}`)
+        await execPromise(`java -jar ${mvnInstrumentaterPath} ${agentPath} "${poms.join(" ")}`)
         console.log('> Update to pom.xml is done')
     } else {
         console.warn("> Couldn't find any pom.xml files. Exiting the instrumentation step.")
@@ -41,7 +41,6 @@ async function getPomFiles (dir, files_){
     const fs = require('fs');
     files_ = files_ || [];
     var files = fs.readdirSync(dir);
-    console.log("osman")
     for (var i in files){
         var name = dir + '/' + files[i];
         if (fs.statSync(name).isDirectory()){
@@ -51,7 +50,6 @@ async function getPomFiles (dir, files_){
                 files_.push(name);
         }
     }
-    console.log(files_)
     return files_;
 }
 
