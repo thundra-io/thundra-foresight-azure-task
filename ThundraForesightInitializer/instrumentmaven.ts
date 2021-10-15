@@ -30,7 +30,7 @@ export async function instrumentmaven(instrumenter_version?: string, agentPath?:
     console.log('>found pom files: ' + poms.toString())
 
     if (poms && poms.length > 0) {
-        await execPromise(`java -jar ${mvnInstrumentaterPath} ${agentPath} "${poms.join(" ")}`)
+        await execPromise(`java -jar ${mvnInstrumentaterPath} ${agentPath} "${poms.join(" ")}"`)
         console.log('> Update to pom.xml is done')
     } else {
         console.warn("> Couldn't find any pom.xml files. Exiting the instrumentation step.")
