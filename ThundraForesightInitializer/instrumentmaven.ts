@@ -1,5 +1,4 @@
 import tl = require('azure-pipelines-task-lib/task');
-import globby = require('globby');
 import toolLib = require('azure-pipelines-tool-lib/tool');
 import {getVersion} from "./version";
 const MAVEN_INSTRUMENTATION_METADATA =
@@ -25,11 +24,17 @@ export async function instrumentmaven(instrumenter_version?: string, agentPath?:
     console.log(`> Successfully downloaded the maven instrumentater to ${mvnInstrumentaterPath}`)
 
     console.log('> Updating pom.xml...')
-    const poms = await globby.globby("pom.xml");
+    const fs = require('fs');
+
+    let poms = '';
+    fs.readdirSync(__dirname).forEach(file => {
+        poms += file;
+    });
+
     console.log('>found pom files: ' + poms.toString())
 
-    if (poms.length > 0) {
-        await execPromise(`"java -jar ${mvnInstrumentaterPath} ${agentPath} \\"${poms.toString()}\\""`)
+    if (poms && poms.trim()) {
+        await execPromise(`"java -jar ${mvnInstrumentaterPath} ${agentPath} \\"${poms.trim()}\\""`)
         console.log('> Update to pom.xml is done')
     } else {
         console.warn("> Couldn't find any pom.xml files. Exiting the instrumentation step.")
