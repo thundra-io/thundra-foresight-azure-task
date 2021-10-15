@@ -15,8 +15,7 @@ export async function instrumentgradle(instrumenter_version?: string, agentPath?
     }
     console.log('> Generating init file...')
     const templatePath = join(__dirname, 'templates/thundra.gradle.ejs')
-    let gradle_home_dir:string = process.env.GRADLE_HOME!;
-    const initFilePath = join(gradle_home_dir, 'init.d/thundra.gradle')
+    const initFilePath = join(__dirname, 'thundra.gradle')
     const ejsData = {
         thundra: {
             gradlePluginVersion,
