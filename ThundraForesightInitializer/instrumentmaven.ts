@@ -27,8 +27,11 @@ export async function instrumentmaven(instrumenter_version?: string, agentPath?:
     const fs = require('fs');
 
     let poms = '';
-    fs.readdirSync(__dirname).forEach(file => {
-        poms += file;
+    fs.readdirSync(process.cwd()).forEach(file => {
+        if (file.includes("pom.xml")) {
+            poms += file
+            poms += " "
+        }
     });
 
     console.log('>found pom files: ' + poms.toString())
