@@ -35,7 +35,31 @@ You can integrate your Azure Devops Project pipeline in just 2 steps. First, you
           project_id: '$(THUNDRA_AGENT_TEST_PROJECT_ID)'
           build_run_type: **Select from list**
 
+**Additional configuration for Gradle** 
+
+- After adding task described below, You should add an init script parameter '--init-script=$(THUNDRA_GRADLE_INIT_SCRIPT_PATH)'
+
+   **Add with yaml**
+
+        - task: Gradle@2
+          inputs:
+          workingDirectory: ''
+          gradleWrapperFile: 'gradlew'
+          options: '--init-script=$(THUNDRA_GRADLE_INIT_SCRIPT_PATH)'
+          gradleOptions: '-Xmx3072m'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.8'
+          jdkArchitectureOption: 'x64'
+          publishJUnitResults: true
+          testResultsFiles: '**/TEST-*.xml'
+          tasks: 'build'
+
+   **Add with classic editor**
+- Add **--init-script=$(THUNDRA_GRADLE_INIT_SCRIPT_PATH)** value to Gradle task option.
+  ![Gradle](images/screenshot_gradle.png)
+
 **Variables**
-- Go to your Pipeline **Variables** page and add the `THUNDRA_APIKEY` (don't forget to keep this value as secret) and `THUNDRA_AGENT_TEST_PROJECT_ID` variables wtih your foresight project configuration described before.
+
+Go to your Pipeline **Variables** page and add the `THUNDRA_APIKEY` (don't forget to keep this value as secret) and `THUNDRA_AGENT_TEST_PROJECT_ID` variables wtih your foresight project configuration described before.
 
    For further information please visit: [https://foresight.docs.thundra.io/integrations/azure-devops](https://foresight.docs.thundra.io/integrations/azure-devops)
