@@ -36,6 +36,8 @@ export async function instrument(instrumenter_version?: string, agent_version?: 
     }
     else if(build_run_type === 'Gradle'){
         console.log('> Starting gradle instrumentation...')
+        let re = /\\/gi;
+        agentPath = agentPath.replace(re, "\\\\");
         await instrumentgradle(instrumenter_version, agentPath)
     }
 
