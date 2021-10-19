@@ -1,5 +1,9 @@
 # Thundra Foresight Initializer Task
 
+![Ubuntu badge](https://badgen.net/badge/icon/Ubuntu?icon=terminal&label)
+![macOS badge](https://badgen.net/badge/icon/macOS?icon=apple&label)
+![Windows badge](https://badgen.net/badge/icon/Windows?icon=windows&label)
+
 **Thundra Foresight is a tool for debugging and troubleshooting test failures in no time and optimize build duration and performance in your CI pipeline.**
 
 You can empower your Azure Devops pipeline with Distributed Tracing and  Time-Travel Debugging.
