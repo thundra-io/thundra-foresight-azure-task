@@ -5,7 +5,7 @@ pool:
   vmImage: "ubuntu-latest"
 
 variables:
-  - group: foresight_group # Rename to whatever you named your variable group in the prerequisite stage of step 6
+  - group: foresight_group
 
 stages:
   - stage: Package_extension_and_publish_build_artifacts
@@ -18,7 +18,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: './ThundraForesightInitializer' # Update to the name of the directory of your task
+              workingDir: './ThundraForesightInitializer'
           - task: Bash@3
             displayName: Compile Javascript
             inputs:
@@ -29,7 +29,7 @@ stages:
           - task: QueryAzureDevOpsExtensionVersion@3
             inputs:
               connectTo: 'VsTeam'
-              connectedServiceName: 'marketplace-connection' # Change to whatever you named the service connection
+              connectedServiceName: 'marketplace-connection'
               publisherId: '$(PublisherID)'
               extensionId: '$(ExtensionID)'
               versionAction: 'Patch'
@@ -43,7 +43,7 @@ stages:
               extensionVersion: '$(Task.Extension.Version)'
               updateTasksVersion: true
               updateTasksVersionType: 'patch'
-              extensionVisibility: 'public' # Change to public if you're publishing to the marketplace
+              extensionVisibility: 'public'
               extensionPricing: 'free'
           - task: CopyFiles@2
             displayName: "Copy Files to: $(Build.ArtifactStagingDirectory)"
@@ -72,12 +72,12 @@ stages:
           - task: PublishAzureDevOpsExtension@3
             inputs:
               connectTo: 'VsTeam'
-              connectedServiceName: 'marketplace-connection' # Change to whatever you named the service connection
+              connectedServiceName: 'marketplace-connection'
               fileType: 'vsix'
               vsixFile: 'thundra-foresight-initializer/*thundra-foresight-initializer-*.vsix'
               publisherId: '$(PublisherID)'
               extensionId: '$(ExtensionID)'
               extensionName: '$(ExtensionName)'
               updateTasksVersion: false
-              extensionVisibility: 'public' # Change to public if you're publishing to the marketplace
+              extensionVisibility: 'public'
               extensionPricing: 'free'
