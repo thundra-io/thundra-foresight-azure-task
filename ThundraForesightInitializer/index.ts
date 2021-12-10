@@ -23,7 +23,6 @@ if (apiKey) {
 }
 if (projectId) {
     console.log(`[Thundra] projectId...` + projectId)
-    console.log(tl.getVariables());
     let variable = getVariable('THUNDRA_AGENT_TEST_PROJECT_ID');
     tl.setVariable('THUNDRA_AGENT_TEST_PROJECT_ID', projectId, variable == undefined ? false : variable.secret)
     console.log(variable);
