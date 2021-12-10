@@ -16,13 +16,11 @@ function getVariable(name: string) {
 }
 
 if (apiKey) {
-    console.log(`[Thundra] apiKey...` + apiKey)
     let variable = getVariable('THUNDRA_APIKEY');
     tl.setVariable('THUNDRA_APIKEY', apiKey, variable == undefined ? false : variable.secret)
     console.log(variable);
 }
 if (projectId) {
-    console.log(`[Thundra] projectId...` + projectId)
     let variable = getVariable('THUNDRA_AGENT_TEST_PROJECT_ID');
     tl.setVariable('THUNDRA_AGENT_TEST_PROJECT_ID', projectId, variable == undefined ? false : variable.secret)
     console.log(variable);
