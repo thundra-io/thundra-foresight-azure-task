@@ -32,7 +32,6 @@ if (parent_pom_path) {
 async function run() {
     try {
         console.log(`[Thundra] Initializing the Thundra Action...`)
-        console.log(process.env);
         await instrument(instrumenter_version, agent_version, build_run_type)
     } catch (err) {
         let errorMessage = "Failed to do something exceptional";
