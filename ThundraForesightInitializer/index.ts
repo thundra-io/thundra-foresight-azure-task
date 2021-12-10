@@ -18,12 +18,10 @@ function getVariable(name: string) {
 if (apiKey) {
     let variable = getVariable('THUNDRA_APIKEY');
     tl.setVariable('THUNDRA_APIKEY', apiKey, variable == undefined ? false : variable.secret)
-    console.log(variable);
 }
 if (projectId) {
     let variable = getVariable('THUNDRA_AGENT_TEST_PROJECT_ID');
     tl.setVariable('THUNDRA_AGENT_TEST_PROJECT_ID', projectId, variable == undefined ? false : variable.secret)
-    console.log(variable);
 }
 if (parent_pom_path) {
     tl.setVariable('THUNDRA_MAVEN_INSTRUMENTATION_PARENT_POM', parent_pom_path)
