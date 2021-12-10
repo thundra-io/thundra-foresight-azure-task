@@ -56,7 +56,6 @@ stages:
               ArtifactName: '$(ArtifactName)'
               publishLocation: 'Container'
   - stage: Download_build_artifacts_and_publish_the_extension
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - job:
         steps:
