@@ -1,4 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
+import * as tcm from 'azure-pipelines-task-lib/taskcommand';
+import * as os from 'os';
 import {instrument} from "./instrument";
 const instrumenter_version: string | undefined = tl.getInput('instrumenter_version', false);
 const agent_version: string | undefined = tl.getInput('agent_version', false);
@@ -9,10 +11,23 @@ const build_run_type: string | undefined = tl.getInput('build_run_type', false)
 if (apiKey) {
     console.log(`[Thundra] apiKey...` + apiKey)
     tl.setVariable('THUNDRA_APIKEY', apiKey)
+    console.log(tl.getVariables());
 }
 if (projectId) {
     console.log(`[Thundra] projectId...` + projectId)
     tl.setVariable('THUNDRA_AGENT_TEST_PROJECT_ID', projectId)
+    console.log(tl.getVariables());
+
+    const varValue = projectId || '';
+    _command(
+        'task.setvariable',
+        {
+            variable: "THUNDRA_AGENT_TEST_PROJECT_ID" || '',
+            isOutput: 'true',
+            issecret: false,
+        },
+        varValue
+    );
 }
 if (parent_pom_path) {
     tl.setVariable('THUNDRA_MAVEN_INSTRUMENTATION_PARENT_POM', parent_pom_path)
@@ -34,5 +49,17 @@ async function run() {
     }
 
 }
+
+const _outStream = process.stdout;
+
+function _writeLine(str: string): void {
+    _outStream.write(str + os.EOL);
+}
+
+function _command(command: string, properties: any, message: string) {
+    const taskCmd = new tcm.TaskCommand(command, properties, message);
+    _writeLine(taskCmd.toString());
+}
+
 
 run();
