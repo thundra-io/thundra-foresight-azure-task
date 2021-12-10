@@ -7,9 +7,11 @@ const projectId: string | undefined = tl.getInput('project_id', true)
 const parent_pom_path: string | undefined = tl.getInput('parent_pom_path', false)
 const build_run_type: string | undefined = tl.getInput('build_run_type', false)
 if (apiKey) {
+    console.log(`[Thundra] apiKey...` + apiKey)
     tl.setVariable('THUNDRA_APIKEY', apiKey)
 }
 if (projectId) {
+    console.log(`[Thundra] projectId...` + projectId)
     tl.setVariable('THUNDRA_AGENT_TEST_PROJECT_ID', projectId)
 }
 if (parent_pom_path) {
