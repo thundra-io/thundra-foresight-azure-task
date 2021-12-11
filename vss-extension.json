@@ -1,0 +1,69 @@
+{
+  "manifestVersion": 1,
+  "id": "thundra-foresight-initializer",
+  "name": "Thundra Foresight Initializer",
+  "version": "0.0.1",
+  "publisher": "Thundra",
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "images/screenshot_taskyaml.png"
+    },{
+      "path": "images/screenshot_taskgui.png"
+    }
+  ],
+  "links": {
+    "privacypolicy": {
+      "uri": "https://www.thundra.io/privacy-policy"
+    },
+    "support": {
+      "uri": "https://www.thundra.io/contact-us"
+    },
+    "license": {
+      "uri": "https://github.com/thundra-io/thundra-foresight-azure-task/blob/master/LICENSE"
+    }
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Thundra Foresight Initializer.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/logo_thundra.png"
+  },
+  "files": [
+    {
+      "path": "ThundraForesightInitializer"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-thundra-foresight-initializer",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "ThundraForesightInitializer"
+      }
+    }
+  ],
+
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/thundra-io/thundra-foresight-azure-task"
+  }
+}
+
