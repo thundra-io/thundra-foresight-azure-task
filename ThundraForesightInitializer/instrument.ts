@@ -21,14 +21,14 @@ export async function instrument(instrumenter_version?: string, agent_version?: 
     tl.debug('thundraAgentVersion: ' +thundraAgentVersion);
     if (process.env.LOCAL_AGENT_PATH) {
         agentPath = process.env.LOCAL_AGENT_PATH
-        tl.debug('> Using the local agent at ${agentPath}');
+        console.log('> Using the local agent at ${agentPath}');
 
     } else {
         console.log('> Downloading the agent...')
         agentPath = await toolLib.downloadTool(
             `https://repo.thundra.io/service/local/repositories/thundra-releases/content/io/thundra/agent/thundra-agent-bootstrap/${thundraAgentVersion}/thundra-agent-bootstrap-${thundraAgentVersion}.jar`, 'thundra-agent-bootstrap.jar'
         )
-        tl.debug(`> Successfully downloaded the agent to ${agentPath}`)
+        console.log(`> Successfully downloaded the agent to ${agentPath}`)
     }
     if (build_run_type == undefined || build_run_type === 'Maven') {
         console.log('> Starting maven instrumentation...')
@@ -36,6 +36,8 @@ export async function instrument(instrumenter_version?: string, agent_version?: 
     }
     else if(build_run_type === 'Gradle'){
         console.log('> Starting gradle instrumentation...')
+        let re = /\\/gi;
+        agentPath = agentPath.replace(re, "\\\\");
         await instrumentgradle(instrumenter_version, agentPath)
     }
 

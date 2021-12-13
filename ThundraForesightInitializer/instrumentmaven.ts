@@ -15,23 +15,42 @@ export async function instrumentmaven(instrumenter_version?: string, agentPath?:
 
         return
     }
-    tl.debug('> Downloading the maven instrumentater')
+    console.log('> Downloading the maven instrumentater')
     const mvnInstrumentaterPath = await toolLib.downloadTool(
         `https://repo1.maven.org/maven2/io/thundra/plugin/thundra-agent-maven-test-instrumentation/${mavenInstrumenterVersion}/thundra-agent-maven-test-instrumentation-${mavenInstrumenterVersion}.jar`, 'thundra-agent-maven-test-instrumentation.jar'
     )
 
 
-    tl.debug(`> Successfully downloaded the maven instrumentater to ${mvnInstrumentaterPath}`)
+    console.log(`> Successfully downloaded the maven instrumentater to ${mvnInstrumentaterPath}`)
 
-    tl.debug('> Updating pom.xml...')
+    console.log('> Updating pom.xml...')
 
-    const poms = await execPromise(`sh -c "find ${process.cwd()} -name \\"pom.xml\\" -exec echo '{}' +"`)
-    if (poms && poms.trim()) {
-        await execPromise(`sh -c "java -jar ${mvnInstrumentaterPath} ${agentPath} \\"${poms.trim()}\\""`)
-        tl.debug('> Update to pom.xml is done')
+    let poms = await getPomFiles(process.cwd(), undefined);
+
+    console.log('>found pom files: ' + poms.toString())
+
+    if (poms && poms.length > 0) {
+        await execPromise(`java -jar ${mvnInstrumentaterPath} ${agentPath} "${poms.join(" ")}"`)
+        console.log('> Update to pom.xml is done')
     } else {
-        tl.warning("> Couldn't find any pom.xml files. Exiting the instrumentation step.")
+        console.warn("> Couldn't find any pom.xml files. Exiting the instrumentation step.")
     }
+}
+
+async function getPomFiles (dir, files_){
+    const fs = require('fs');
+    files_ = files_ || [];
+    var files = fs.readdirSync(dir);
+    for (var i in files){
+        var name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()){
+            getPomFiles(name, files_);
+        } else {
+            if (name.includes("pom.xml"))
+                files_.push(name);
+        }
+    }
+    return files_;
 }
 
 async function execPromise(command):Promise<string> {
